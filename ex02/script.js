@@ -7,7 +7,7 @@ const btLimpar = document.getElementById("btLimpar");
 let somatorio = 0;
 let qtd = 0;
 
-btAdic.onclick = () => {
+const handleBtAdicionarClick = () => {
   let num = parseInt(inputNum.value);
   if (isNaN(num)) {
     alert("Digite um número inteiro!");
@@ -25,10 +25,15 @@ btAdic.onclick = () => {
   inputNum.focus();
 };
 
-btLimpar.onclick = () => {
+const handleBtLimparClick = (evt) => {
+  console.log("evt.target", evt.target);
   inputSoma.value = 0;
   inputMedia.value = 0;
   inputQtd.value = 0;
   inputNum.value = "";
   inputNum.focus();
 };
+
+// configuração de todos os eventos
+btAdic.onclick = handleBtAdicionarClick;
+btLimpar.onclick = handleBtLimparClick;
