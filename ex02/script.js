@@ -1,39 +1,35 @@
-const btAdic = document.getElementById("btAdic");
-const inputNum = document.getElementById("inputNum");
-const inputSoma = document.getElementById("inputSoma");
-const inputMedia = document.getElementById("inputMedia");
-const inputQtd = document.getElementById("inputQtd");
-const btLimpar = document.getElementById("btLimpar");
-let somatorio = 0;
-let qtd = 0;
+const inputMin = document.getElementById("inputMin");
+const inputMax = document.getElementById("inputMax");
+const btSortear = document.getElementById("btSortear");
+const h1Resultado = document.getElementById("h1Resultado");
 
-const handleBtAdicionarClick = () => {
-  let num = parseInt(inputNum.value);
-  if (isNaN(num)) {
-    alert("Digite um número inteiro!");
-    inputNum.focus();
+const handleBtSortearClick = () => {
+  let min = parseInt(inputMin.value);
+  let max = parseInt(inputMax.value);
+
+  if (isNaN(min)) {
+    alert("Digite um número inteiro para o menor valor!");
+    inputMin.value = "";
+    inputMin.focus();
     return;
   }
 
-  ++qtd;
-  somatorio += num;
-  const media = somatorio / qtd;
-  inputSoma.value = somatorio;
-  inputMedia.value = media;
-  inputQtd.value = qtd;
-  inputNum.value = "";
-  inputNum.focus();
-};
+  if (isNaN(max)) {
+    alert("Digite um número inteiro para o maior valor!");
+    inputMax.value = "";
+    inputMax.focus();
+    return;
+  }
 
-const handleBtLimparClick = (evt) => {
-  console.log("evt.target", evt.target);
-  inputSoma.value = 0;
-  inputMedia.value = 0;
-  inputQtd.value = 0;
-  inputNum.value = "";
-  inputNum.focus();
+  if (min > max) {
+    alert("O  menor valor precisa ser menor ou igual ao maior valor!");
+    inputMin.focus();
+    return;
+  }
+
+  let intervalo = max - min + 1;
+  h1Resultado.innerHTML = Math.trunc(Math.random() * intervalo) + min;
 };
 
 // configuração de todos os eventos
-btAdic.onclick = handleBtAdicionarClick;
-btLimpar.onclick = handleBtLimparClick;
+btSortear.onclick = handleBtSortearClick;
