@@ -18,6 +18,7 @@ const getUser = () => {
   if (userJson) {
     user = JSON.parse(userJson);
   }
+  console.log("user", user);
   return user;
 };
 
@@ -105,6 +106,11 @@ const getTarefas = async () => {
     return;
   }
   try {
+    console.log("baseURL", baseURL);
+    console.log("headers", {
+      ...headers,
+      "X-Parse-Session-Token": user.sessionToken,
+    });
     const response = await fetch(baseURL, {
       method: "GET",
       headers: {
