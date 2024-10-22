@@ -165,6 +165,7 @@ const handleBtAdicionarClick = async () => {
 };
 
 const handleWindowOnLoad = () => {
+  console.log("onload");
   let user = getUser();
   if (!user) {
     location.assign("../login.html");
