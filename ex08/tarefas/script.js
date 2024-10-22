@@ -131,6 +131,7 @@ const getTarefas = async () => {
 };
 
 const handleBtAdicionarClick = async () => {
+  console.log("Botão adicionar click");
   let user = getUser();
   if (!user) {
     alert("Você precisa estar logado");
