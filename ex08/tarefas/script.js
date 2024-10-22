@@ -169,7 +169,7 @@ const handleWindowOnLoad = () => {
   console.log("onload");
   let user = getUser();
   if (!user) {
-    location.assign("../login.html");
+    location.assign("/ex08/login.html");
   }
   getTarefas();
 };
