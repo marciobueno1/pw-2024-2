@@ -169,7 +169,8 @@ const handleWindowOnLoad = () => {
   console.log("onload");
   let user = getUser();
   if (!user) {
-    location.assign("/ex08/login.html");
+    const searchParams = new URLSearchParams({ url: location.href });
+    location.assign(`/ex08/login.html?${searchParams.toString()}`);
   }
   getTarefas();
 };

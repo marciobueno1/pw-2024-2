@@ -85,7 +85,12 @@ const handleBtLoginClick = async () => {
   }
   console.log("data:", data);
   localStorage.user = JSON.stringify(data);
-  history.back();
+  const searchParams = new URLSearchParams(location.search);
+  if (searchParams.has("url")) {
+    location.replace(searchParams.get("url"));
+  } else {
+    history.back();
+  }
 };
 
 const handleBtLogoutClick = async () => {
